@@ -1,0 +1,72 @@
+<div class="container">
+    <div class="p-4 p-md-2 mb-4 rounded text-body-emphasis bg-body-secondary">
+        <div class="col-lg-6 px-0">
+            <h1 class="display-4 fst-italic">Agenda</h1>
+        </div>
+    </div>
+
+    <div>
+        <form [formGroup]="agendaForm" (ngSubmit)="submitForm()">
+
+            <label>Fecha</label>
+            <input class="form-control" type="date" id="fecha" formControlName="fecha" placeholder="Fecha">
+            <div class="alert alert-warning" *ngIf="agendaForm.get('fecha')!.touched && agendaForm.get('fecha')!.errors">
+                La fecha es obligatoria.
+            </div>
+
+            <label>Hora</label>
+            <input class="form-control" type="time" id="hora" formControlName="hora" placeholder="Hora">
+            <div class="alert alert-warning" *ngIf="agendaForm.get('hora')!.touched && agendaForm.get('hora')!.errors">
+                La hora es obligatoria.
+            </div>
+
+            
+            <label>Paciente</label>
+            <select class="form-control" id="paciente" formControlName="paciente">
+                @for(paciente of pacientes; track paciente.rut) {
+                    <option value="{{paciente.rut}}">{{paciente.rut}} / {{paciente.nombres}} {{paciente.apellidos}}</option>
+                }
+            </select>
+            <div class="alert alert-warning" *ngIf="agendaForm.get('paciente')!.touched && agendaForm.get('paciente')!.errors">
+                La selección del paciente es obligatoria.
+            </div>
+
+            <label>Tratamiento</label>
+            <select class="form-control" id="tratamiento" formControlName="tratamiento">
+                @for(tratamiento of tratamientos; track tratamiento.index; let idx = $index, e = $even) {
+                    <option value="{{idx}}">({{idx}}) {{tratamiento.nombre}} / {{tratamiento.descripcion}}</option>
+                }
+            </select>
+            <div class="alert alert-warning" *ngIf="agendaForm.get('paciente')!.touched && agendaForm.get('paciente')!.errors">
+                La selección del tratamiento es obligatoria.
+            </div>
+
+            <button type="submit" class="btn btn-primary" >Agregar</button>
+
+        </form>
+        <div id="agendaList">
+            <table class="table table-bordered table-hover">
+                <tr>
+                    <td width="1%">Rut</td>
+                    <td>Fecha</td>
+                    <td>Hora</td>
+                    <td>Paciente</td>
+                    <td>Tratamiento</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tbody id="agendaList">
+                    <tr *ngFor="let agenda of agendas; index as i">
+                        <td>{{agenda.fecha}}</td>
+                        <td>{{agenda.hora}}</td>
+                        <td>{{agenda.paciente}}</td>
+                        <td>{{agenda.tratamiento}}</td>
+                        <td><button (click)="unsetAgenda(i)">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="m376-300 104-104 104 104 56-56-104-104 104-104-56-56-104 104-104-104-56 56 104 104-104 104 56 56Zm-96 180q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520Zm-400 0v520-520Z"/></svg>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

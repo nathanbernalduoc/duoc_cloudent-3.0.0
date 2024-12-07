@@ -1,0 +1,12 @@
+<div class="topnav" [ngClass]="{'responsive': isResponsive}">
+    <a href="#" (click)="goAgenda()" onclick="return false;" class="active">Agenda</a>
+    <a href="#" (click)="goPacientes()" onclick="return false;">Pacientes</a>
+    <a href="#" (click)="goTratamientos()" onclick="return false;">Tratamientos</a>
+    <a href="#" (click)="goUsuarios()" onclick="return false;">Usuarios</a>
+    <a href="#" (click)="goSalir()" onclick="return false;">Salir</a>
+    <a href="javascript:void(0);" style="font-size:15px;" class="icon" (click)="toggleMenu()">&#9776;</a>
+</div>
+
+<div *ngIf="msg != undefined" >{{msg}}</div>
+<router-outlet />
+

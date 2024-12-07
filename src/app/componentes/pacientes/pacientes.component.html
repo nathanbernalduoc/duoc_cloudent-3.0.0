@@ -1,0 +1,75 @@
+<div class="container">
+    <div class="p-4 p-md-2 mb-4 rounded text-body-emphasis bg-body-secondary">
+        <div class="col-lg-6 px-0">
+            <h1 class="display-4 fst-italic">Pacientes</h1>
+        </div>
+    </div>
+
+    <div>
+        <form [formGroup]="pacienteForm" (ngSubmit)="submitForm()">
+
+            <label>Rut</label>
+            <input class="form-control" type="text" id="rut" formControlName="rut">
+            <div class="alert alert-warning" *ngIf="pacienteForm.get('rut')!.touched && pacienteForm.get('rut')!.errors">
+                El rut es obligatorio.
+            </div>
+        
+            <label>Nombres</label>
+            <input class="form-control" type="text" id="nombres" formControlName="nombres" placeholder="Nombres">
+            <div class="alert alert-warning" *ngIf="pacienteForm.get('nombres')!.touched && pacienteForm.get('nombres')!.errors">
+                El nombre es obligatorio.
+            </div>
+
+            <label>Apellidos</label>
+            <input class="form-control" type="text" id="apellidos" formControlName="apellidos" placeholder="Apellidos">
+            <div class="alert alert-warning" *ngIf="pacienteForm.get('apellidos')!.touched && pacienteForm.get('apellidos')!.errors">
+                El apellido es obligatorio.
+            </div>
+
+            <label>Direcci&oacute;n</label>
+            <input class="form-control" type="text" id="direccion" formControlName="direccion" placeholder="Dirección">
+
+            <label>Tel&eacute;fono</label>
+            <input class="form-control" type="number" id="telefono" formControlName="telefono" placeholder="Telefono">
+            <div class="alert alert-warning" *ngIf="pacienteForm.get('telefono')!.touched && pacienteForm.get('telefono')!.errors">
+                El teléfono es obligatorio.
+            </div>
+
+            <label>Email</label>
+            <input class="form-control" type="email" id="email" formControlName="email" placeholder="Email">
+            <div class="alert alert-warning" *ngIf="pacienteForm.get('email')!.touched && pacienteForm.get('email')!.hasError('email')">
+                El email es obligatorio y debe ser formato correo electrónico.
+            </div>
+
+            <button type="submit" class="btn btn-primary" >Agregar</button>
+
+        </form>
+        <div id="agendaList">
+            <table class="table table-bordered table-hover">
+                <tr>
+                    <td width="1%">Rut</td>
+                    <td>Nombre</td>
+                    <td>Apellido</td>
+                    <td>Direcci&oacute;nn</td>
+                    <td>Tel&eacute;fono</td>
+                    <td>Email</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tbody id="pacienteList">
+                    <tr *ngFor="let p of pacientes; index as i">
+                        <td>{{p.rut}}</td>
+                        <td>{{p.nombres}}</td>
+                        <td>{{p.apellidos}}</td>
+                        <td>{{p.direccion}}</td>
+                        <td>{{p.telefono}}</td>
+                        <td>{{p.email}}</td>
+                        <td><button (click)="unsetCliente(i)">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="m376-300 104-104 104 104 56-56-104-104 104-104-56-56-104 104-104-104-56 56 104 104-104 104 56 56Zm-96 180q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520Zm-400 0v520-520Z"/></svg>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

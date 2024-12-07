@@ -1,0 +1,62 @@
+<div class="container">
+    <div class="p-4 p-md-2 mb-4 rounded text-body-emphasis bg-body-secondary">
+        <div class="col-lg-6 px-0">
+            <h1 class="display-4 fst-italic">Usuarios</h1>
+        </div>
+    </div>
+
+    <div>
+        <form [formGroup]="usuarioForm" (ngSubmit)="submitForm()">
+
+            <label>Usuario</label>
+            <input class="form-control" type="text" id="contrasena" formControlName="usuario" placeholder="Usuario/Email">
+            <div class="alert alert-warning" *ngIf="usuarioForm.get('usuario')!.touched && usuarioForm.get('usuario')!.errors">
+                El nombre de usuario es obligatorio.
+            </div>
+
+            <label>Contrase&ntilde;a</label>
+            <input class="form-control" type="text" id="contrasena" formControlName="contrasena" placeholder="Contraseña">
+            <div class="alert alert-warning" *ngIf="usuarioForm.get('contrasena')!.touched && usuarioForm.get('contrasena')!.errors">
+                La contraseña es obligatoria.
+            </div>
+
+            <label>Nombre</label>
+            <input class="form-control" type="text" id="nombre" formControlName="nombre" placeholder="Nombre">
+            <div class="alert alert-warning" *ngIf="usuarioForm.get('nombre')!.touched && usuarioForm.get('nombre')!.errors">
+                El nombre es obligatorio.
+            </div>
+
+            <label>Rol</label>
+            <input class="form-control" type="text" id="rol" formControlName="rol" placeholder="Rol">
+            <div class="alert alert-warning" *ngIf="usuarioForm.get('rol')!.touched && usuarioForm.get('rol')!.errors">
+                El rol es obligatorio.
+            </div>
+
+            <button type="submit" class="btn btn-primary" >Agregar</button>
+
+        </form>
+        <div id="agendaList">
+            <table class="table table-bordered table-hover">
+                <tr>
+                    <td>Usuario</td>
+                    <td>Contrase&ntilde;a</td>
+                    <td>Nombre</td>
+                    <td>Rol</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tbody id="usuarioList">
+                    <tr *ngFor="let p of usuarios; index as i">
+                        <td>{{p.usuario}}</td>
+                        <td>{{p.constrasena}}</td>
+                        <td>{{p.nombre}}</td>
+                        <td>{{p.rol}}</td>
+                        <td><button (click)="unsetUsuario(i)">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="m376-300 104-104 104 104 56-56-104-104 104-104-56-56-104 104-104-104-56 56 104 104-104 104 56 56Zm-96 180q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520Zm-400 0v520-520Z"/></svg>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

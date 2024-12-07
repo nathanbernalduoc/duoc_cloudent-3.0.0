@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="p-4 p-md-2 mb-4 rounded text-body-emphasis bg-body-secondary">
+        <div class="col-lg-6 px-0">
+            <h1 class="display-4 fst-italic">Tratamientos</h1>
+        </div>
+    </div>
+
+    <div>
+        <form [formGroup]="tratamientoForm" (ngSubmit)="submitForm()">
+
+            <label>Nombre</label>
+            <input class="form-control" type="text" id="nombre" formControlName="nombre" placeholder="Nombre">
+            <div class="alert alert-warning" *ngIf="tratamientoForm.get('nombre')!.touched && tratamientoForm.get('nombre')!.errors">
+                El nombre es obligatorio.
+            </div>
+        
+            <label>Descripci&oacute;n</label>
+            <input class="form-control" type="text" id="descripcion" formControlName="descripcion" placeholder="Descripcion">
+            <div class="alert alert-warning" *ngIf="tratamientoForm.get('descripcion')!.touched && tratamientoForm.get('descripcion')!.errors">
+                La descripción es obligatoria.
+            </div>
+
+            <label>Valor</label>
+            <input class="form-control" type="number" id="valor" formControlName="valor" placeholder="Valor">
+            <div class="alert alert-warning" *ngIf="tratamientoForm.get('valor')!.touched && tratamientoForm.get('valor')!.errors">
+                El valor es obligatorio.
+            </div>
+
+            <button type="submit" class="btn btn-primary" >Agregar</button>
+
+        </form>
+        <div id="agendaList">
+            <table class="table table-bordered table-hover">
+                <tr>
+                    <td width="1%">Rut</td>
+                    <td>Nombre</td>
+                    <td>Descripción</td>
+                    <td>Valor</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tbody id="tratamientoList">
+                    <tr *ngFor="let p of tratamientos; index as i">
+                        <td>{{p.nombre}}</td>
+                        <td>{{p.descripcion}}</td>
+                        <td>{{p.valor}}</td>
+                        <td><button (click)="unsetTratamiento(i)">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="m376-300 104-104 104 104 56-56-104-104 104-104-56-56-104 104-104-104-56 56 104 104-104 104 56 56Zm-96 180q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520Zm-400 0v520-520Z"/></svg>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,916 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>cloudent-2.0.0 documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">cloudent-2.0.0 documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  PacientesComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/componentes/pacientes/pacientes.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Agregar pacientes
+Quitar pacientes
+Pacientes almacenados en un arreglo temporal</p>
+
+    </p>
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-pacientes</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>CommonModule</code>
+                            <code>ReactiveFormsModule</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./pacientes.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./pacientes.component.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#paciente" >paciente</a>
+                            </li>
+                            <li>
+                                <a href="#pacienteForm" >pacienteForm</a>
+                            </li>
+                            <li>
+                                <a href="#pacientes" >pacientes</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#setPaciente" >setPaciente</a>
+                            </li>
+                            <li>
+                                <a href="#submitForm" >submitForm</a>
+                            </li>
+                            <li>
+                                <a href="#unsetCliente" >unsetCliente</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(router: Router, fb: FormBuilder)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/componentes/pacientes/pacientes.component.ts:39</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                    <code>Router</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>fb</td>
+                                                  
+                                                        <td>
+                                                                    <code>FormBuilder</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="43"
+                                    class="link-to-prism">src/app/componentes/pacientes/pacientes.component.ts:43</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setPaciente"></a>
+                    <span class="name">
+                        <span ><b>setPaciente</b></span>
+                        <a href="#setPaciente"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setPaciente()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="86"
+                                    class="link-to-prism">src/app/componentes/pacientes/pacientes.component.ts:86</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="submitForm"></a>
+                    <span class="name">
+                        <span ><b>submitForm</b></span>
+                        <a href="#submitForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>submitForm()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="77"
+                                    class="link-to-prism">src/app/componentes/pacientes/pacientes.component.ts:77</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="unsetCliente"></a>
+                    <span class="name">
+                        <span ><b>unsetCliente</b></span>
+                        <a href="#unsetCliente"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>unsetCliente(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="109"
+                                    class="link-to-prism">src/app/componentes/pacientes/pacientes.component.ts:109</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="paciente"></a>
+                    <span class="name">
+                        <span ><b>paciente</b></span>
+                        <a href="#paciente"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/componentes/pacientes/pacientes.component.ts:37</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="pacienteForm"></a>
+                    <span class="name">
+                        <span ><b>pacienteForm</b></span>
+                        <a href="#pacienteForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>FormGroup</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/componentes/pacientes/pacientes.component.ts:39</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="pacientes"></a>
+                    <span class="name">
+                        <span ><b>pacientes</b></span>
+                        <a href="#pacientes"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>any[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/componentes/pacientes/pacientes.component.ts:38</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+import { formatDate, CommonModule } from &#x27;@angular/common&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from &#x27;@angular/forms&#x27;;
+
+
+/**
+ * @descripcion
+ * Administración de pacientes
+ * 
+ * Permite administrar los usuarios para ser usados
+ * en la agendamiento de horaras.
+ * 
+ */
+
+/**
+ * 
+ * @usageNotes
+ * 
+ * Agregar pacientes
+ * Quitar pacientes
+ * Pacientes almacenados en un arreglo temporal
+ *
+ **/
+
+
+@Component({
+  selector: &#x27;app-pacientes&#x27;,
+  standalone: true,
+  imports: [ CommonModule,ReactiveFormsModule],
+  templateUrl: &#x27;./pacientes.component.html&#x27;,
+  styleUrl: &#x27;./pacientes.component.css&#x27;
+})
+
+export class PacientesComponent {
+
+  paciente: any &#x3D; {};
+  pacientes: any[] &#x3D; [];
+  pacienteForm!: FormGroup;
+
+  constructor(private router: Router, private fb: FormBuilder) {}
+
+  ngOnInit(): void {
+
+    console.log(&#x27;Pacientes&#x27;);
+
+    this.pacienteForm &#x3D; this.fb.group({
+      rut: [&#x27;&#x27;, Validators.required],
+      nombres: [&#x27;&#x27;, Validators.required],
+      apellidos: [&#x27;&#x27;, Validators.required],
+      direccion: [&#x27;&#x27;],
+      telefono: [&#x27;&#x27;, Validators.required],
+      email: [&#x27;&#x27;, [Validators.required, Validators.email]]
+    });
+
+    var p &#x3D; localStorage.getItem(&#x27;pacientes&#x27;);
+    console.log(p);
+    if (p !&#x3D; undefined) {
+      var list &#x3D; JSON.parse(p);
+      console.log(list);
+      for(var i &#x3D; 0; i&lt;list.length; i++) {
+        console.log(list[i].nombres);
+        this.paciente.rut &#x3D; list[i].rut;
+        this.paciente.nombres &#x3D; list[i].nombres;
+        this.paciente.apellidos &#x3D; list[i].apellidos;
+        this.paciente.direccion &#x3D; list[i].direccion;
+        this.paciente.telefono &#x3D; list[i].telefono;
+        this.paciente.email &#x3D; list[i].email;
+        this.pacientes.push(this.paciente);
+      }
+
+    }
+    console.log(this.pacientes);
+
+  }
+
+  submitForm(): void {
+    if (!this.pacienteForm.valid) {
+      alert(&#x27;Revise los datos proporcionados, se han encontrado errores de validaciones.&#x27;);
+    } else {
+      console.log(&#x27;Guardando paciente.&#x27;);
+      this.setPaciente();
+    }
+  }
+
+  setPaciente(): void {
+
+    var rut &#x3D; this.pacienteForm.get(&#x27;rut&#x27;)!.value;
+    var nombres &#x3D; this.pacienteForm.get(&#x27;nombres&#x27;)!.value;
+    var apellidos &#x3D; this.pacienteForm.get(&#x27;apellidos&#x27;)!.value;
+    var direccion &#x3D; this.pacienteForm.get(&#x27;direccion&#x27;)!.value;
+    var telefono &#x3D; this.pacienteForm.get(&#x27;telefono&#x27;)!.value;
+    var email &#x3D; this.pacienteForm.get(&#x27;email&#x27;)!.value;
+
+    this.paciente.rut &#x3D; rut;
+    this.paciente.nombres &#x3D; nombres;
+    this.paciente.apellidos &#x3D; apellidos;
+    this.paciente.direccion &#x3D; direccion;
+    this.paciente.telefono &#x3D; telefono;
+    this.paciente.email &#x3D; email;
+
+    console.log(this.pacientes);
+    this.pacientes.push(this.paciente);
+
+    localStorage.setItem(&#x27;pacientes&#x27;, JSON.stringify(this.pacientes));
+
+  }
+
+  unsetCliente(id: number): void {
+
+    console.log(&#x27;Quitando pacientes &#x27;+id);
+
+    this.pacientes.splice(id, 1);
+    localStorage.setItem(&#x27;pacientes&#x27;, JSON.stringify(this.pacientes));
+
+  } 
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;container&quot;&gt;
+    &lt;div class&#x3D;&quot;p-4 p-md-2 mb-4 rounded text-body-emphasis bg-body-secondary&quot;&gt;
+        &lt;div class&#x3D;&quot;col-lg-6 px-0&quot;&gt;
+            &lt;h1 class&#x3D;&quot;display-4 fst-italic&quot;&gt;Pacientes&lt;/h1&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div&gt;
+        &lt;form [formGroup]&#x3D;&quot;pacienteForm&quot; (ngSubmit)&#x3D;&quot;submitForm()&quot;&gt;
+
+            &lt;label&gt;Rut&lt;/label&gt;
+            &lt;input class&#x3D;&quot;form-control&quot; type&#x3D;&quot;text&quot; id&#x3D;&quot;rut&quot; formControlName&#x3D;&quot;rut&quot;&gt;
+            &lt;div class&#x3D;&quot;alert alert-warning&quot; *ngIf&#x3D;&quot;pacienteForm.get(&#x27;rut&#x27;)!.touched &amp;&amp; pacienteForm.get(&#x27;rut&#x27;)!.errors&quot;&gt;
+                El rut es obligatorio.
+            &lt;/div&gt;
+        
+            &lt;label&gt;Nombres&lt;/label&gt;
+            &lt;input class&#x3D;&quot;form-control&quot; type&#x3D;&quot;text&quot; id&#x3D;&quot;nombres&quot; formControlName&#x3D;&quot;nombres&quot; placeholder&#x3D;&quot;Nombres&quot;&gt;
+            &lt;div class&#x3D;&quot;alert alert-warning&quot; *ngIf&#x3D;&quot;pacienteForm.get(&#x27;nombres&#x27;)!.touched &amp;&amp; pacienteForm.get(&#x27;nombres&#x27;)!.errors&quot;&gt;
+                El nombre es obligatorio.
+            &lt;/div&gt;
+
+            &lt;label&gt;Apellidos&lt;/label&gt;
+            &lt;input class&#x3D;&quot;form-control&quot; type&#x3D;&quot;text&quot; id&#x3D;&quot;apellidos&quot; formControlName&#x3D;&quot;apellidos&quot; placeholder&#x3D;&quot;Apellidos&quot;&gt;
+            &lt;div class&#x3D;&quot;alert alert-warning&quot; *ngIf&#x3D;&quot;pacienteForm.get(&#x27;apellidos&#x27;)!.touched &amp;&amp; pacienteForm.get(&#x27;apellidos&#x27;)!.errors&quot;&gt;
+                El apellido es obligatorio.
+            &lt;/div&gt;
+
+            &lt;label&gt;Direcci&amp;oacute;n&lt;/label&gt;
+            &lt;input class&#x3D;&quot;form-control&quot; type&#x3D;&quot;text&quot; id&#x3D;&quot;direccion&quot; formControlName&#x3D;&quot;direccion&quot; placeholder&#x3D;&quot;Dirección&quot;&gt;
+
+            &lt;label&gt;Tel&amp;eacute;fono&lt;/label&gt;
+            &lt;input class&#x3D;&quot;form-control&quot; type&#x3D;&quot;number&quot; id&#x3D;&quot;telefono&quot; formControlName&#x3D;&quot;telefono&quot; placeholder&#x3D;&quot;Telefono&quot;&gt;
+            &lt;div class&#x3D;&quot;alert alert-warning&quot; *ngIf&#x3D;&quot;pacienteForm.get(&#x27;telefono&#x27;)!.touched &amp;&amp; pacienteForm.get(&#x27;telefono&#x27;)!.errors&quot;&gt;
+                El teléfono es obligatorio.
+            &lt;/div&gt;
+
+            &lt;label&gt;Email&lt;/label&gt;
+            &lt;input class&#x3D;&quot;form-control&quot; type&#x3D;&quot;email&quot; id&#x3D;&quot;email&quot; formControlName&#x3D;&quot;email&quot; placeholder&#x3D;&quot;Email&quot;&gt;
+            &lt;div class&#x3D;&quot;alert alert-warning&quot; *ngIf&#x3D;&quot;pacienteForm.get(&#x27;email&#x27;)!.touched &amp;&amp; pacienteForm.get(&#x27;email&#x27;)!.hasError(&#x27;email&#x27;)&quot;&gt;
+                El email es obligatorio y debe ser formato correo electrónico.
+            &lt;/div&gt;
+
+            &lt;button type&#x3D;&quot;submit&quot; class&#x3D;&quot;btn btn-primary&quot; &gt;Agregar&lt;/button&gt;
+
+        &lt;/form&gt;
+        &lt;div id&#x3D;&quot;agendaList&quot;&gt;
+            &lt;table class&#x3D;&quot;table table-bordered table-hover&quot;&gt;
+                &lt;tr&gt;
+                    &lt;td width&#x3D;&quot;1%&quot;&gt;Rut&lt;/td&gt;
+                    &lt;td&gt;Nombre&lt;/td&gt;
+                    &lt;td&gt;Apellido&lt;/td&gt;
+                    &lt;td&gt;Direcci&amp;oacute;nn&lt;/td&gt;
+                    &lt;td&gt;Tel&amp;eacute;fono&lt;/td&gt;
+                    &lt;td&gt;Email&lt;/td&gt;
+                    &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tbody id&#x3D;&quot;pacienteList&quot;&gt;
+                    &lt;tr *ngFor&#x3D;&quot;let p of pacientes; index as i&quot;&gt;
+                        &lt;td&gt;{{p.rut}}&lt;/td&gt;
+                        &lt;td&gt;{{p.nombres}}&lt;/td&gt;
+                        &lt;td&gt;{{p.apellidos}}&lt;/td&gt;
+                        &lt;td&gt;{{p.direccion}}&lt;/td&gt;
+                        &lt;td&gt;{{p.telefono}}&lt;/td&gt;
+                        &lt;td&gt;{{p.email}}&lt;/td&gt;
+                        &lt;td&gt;&lt;button (click)&#x3D;&quot;unsetCliente(i)&quot;&gt;
+                            &lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; height&#x3D;&quot;24px&quot; viewBox&#x3D;&quot;0 -960 960 960&quot; width&#x3D;&quot;24px&quot; fill&#x3D;&quot;#5f6368&quot;&gt;&lt;path d&#x3D;&quot;m376-300 104-104 104 104 56-56-104-104 104-104-56-56-104 104-104-104-56 56 104 104-104 104 56 56Zm-96 180q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520Zm-400 0v520-520Z&quot;/&gt;&lt;/svg&gt;
+                            &lt;/button&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/tbody&gt;
+            &lt;/table&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="container">    <div class="p-4 p-md-2 mb-4 rounded text-body-emphasis bg-body-secondary">        <div class="col-lg-6 px-0">            <h1 class="display-4 fst-italic">Pacientes</h1>        </div>    </div>    <div>        <form [formGroup]="pacienteForm" (ngSubmit)="submitForm()">            <label>Rut</label>            <input class="form-control" type="text" id="rut" formControlName="rut">            <div class="alert alert-warning" *ngIf="pacienteForm.get(\'rut\')!.touched && pacienteForm.get(\'rut\')!.errors">                El rut es obligatorio.            </div>                    <label>Nombres</label>            <input class="form-control" type="text" id="nombres" formControlName="nombres" placeholder="Nombres">            <div class="alert alert-warning" *ngIf="pacienteForm.get(\'nombres\')!.touched && pacienteForm.get(\'nombres\')!.errors">                El nombre es obligatorio.            </div>            <label>Apellidos</label>            <input class="form-control" type="text" id="apellidos" formControlName="apellidos" placeholder="Apellidos">            <div class="alert alert-warning" *ngIf="pacienteForm.get(\'apellidos\')!.touched && pacienteForm.get(\'apellidos\')!.errors">                El apellido es obligatorio.            </div>            <label>Direcci&oacute;n</label>            <input class="form-control" type="text" id="direccion" formControlName="direccion" placeholder="Dirección">            <label>Tel&eacute;fono</label>            <input class="form-control" type="number" id="telefono" formControlName="telefono" placeholder="Telefono">            <div class="alert alert-warning" *ngIf="pacienteForm.get(\'telefono\')!.touched && pacienteForm.get(\'telefono\')!.errors">                El teléfono es obligatorio.            </div>            <label>Email</label>            <input class="form-control" type="email" id="email" formControlName="email" placeholder="Email">            <div class="alert alert-warning" *ngIf="pacienteForm.get(\'email\')!.touched && pacienteForm.get(\'email\')!.hasError(\'email\')">                El email es obligatorio y debe ser formato correo electrónico.            </div>            <button type="submit" class="btn btn-primary" >Agregar</button>        </form>        <div id="agendaList">            <table class="table table-bordered table-hover">                <tr>                    <td width="1%">Rut</td>                    <td>Nombre</td>                    <td>Apellido</td>                    <td>Direcci&oacute;nn</td>                    <td>Tel&eacute;fono</td>                    <td>Email</td>                    <td>&nbsp;</td>                </tr>                <tbody id="pacienteList">                    <tr *ngFor="let p of pacientes; index as i">                        <td>{{p.rut}}</td>                        <td>{{p.nombres}}</td>                        <td>{{p.apellidos}}</td>                        <td>{{p.direccion}}</td>                        <td>{{p.telefono}}</td>                        <td>{{p.email}}</td>                        <td><button (click)="unsetCliente(i)">                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="m376-300 104-104 104 104 56-56-104-104 104-104-56-56-104 104-104-104-56 56 104 104-104 104 56 56Zm-96 180q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520Zm-400 0v520-520Z"/></svg>                            </button>                        </td>                    </tr>                </tbody>            </table>        </div>    </div></div></div>'
+    var COMPONENTS = [{'name': 'AgendaComponent', 'selector': 'app-agenda'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainComponent', 'selector': 'app-outlet'},{'name': 'PacientesComponent', 'selector': 'app-pacientes'},{'name': 'TratamientosComponent', 'selector': 'app-tratamientos'},{'name': 'UsuariosComponent', 'selector': 'app-usuarios'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'PacientesComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'PacientesComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
