@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { formatDate, CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { UsuariosService } from '../../services/usuarios.service';
+import { HttpClientModule } from '@angular/common/http';
 
 /**
  * @descripcion
@@ -24,9 +26,10 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 @Component({
   selector: 'app-usuarios',
   standalone: true,
-  imports: [ CommonModule,ReactiveFormsModule],
+  imports: [ CommonModule,ReactiveFormsModule, HttpClientModule],
   templateUrl: './usuarios.component.html',
-  styleUrl: './usuarios.component.css'
+  styleUrl: './usuarios.component.css',
+  providers: [UsuariosService]
 })
 
 export class UsuariosComponent {
@@ -35,7 +38,7 @@ export class UsuariosComponent {
   usuarios: any[] = [];
   usuarioForm!: FormGroup;
 
-  constructor(private router: Router, private fb: FormBuilder) {}
+  constructor(private router: Router, private fb: FormBuilder, private jsonUsuarios: UsuariosService) {}
 
   ngOnInit(): void {
 
@@ -48,26 +51,12 @@ export class UsuariosComponent {
       rol: ['', Validators.required],
     });
 
-    var p = localStorage.getItem('usuarios');
-    console.log(p);
-
-    if (p != undefined) {
-
-      var list = JSON.parse(p);
-      console.log(list);
-      for(var i = 0; i<list.length; i++) {
-
-        console.log(list[i].nombre);
-        this.usuario.nombre = list[i].nombre;
-        this.usuario.usuario = list[i].usuario;
-        this.usuario.contrasena = list[i].contrasena;
-        this.usuario.rol = list[i].rol;
-        this.usuarios.push(this.usuario);
-
+    this.jsonUsuarios.getUsuarios().subscribe(
+      data=> {
+        console.log(data);
+        this.usuarios = data;
       }
-
-    }
-    console.log(this.usuarios);
+    )
 
   }
 

@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { formatDate, CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { TratamientosService } from '../../services/tratamientos.service';
+import { HttpClientModule } from '@angular/common/http';
 
 /**
  * @descripcion
@@ -26,9 +28,10 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 @Component({
   selector: 'app-tratamientos',
   standalone: true,
-  imports: [ CommonModule,ReactiveFormsModule],
+  imports: [ CommonModule,ReactiveFormsModule, HttpClientModule],
   templateUrl: './tratamientos.component.html',
-  styleUrl: './tratamientos.component.css'
+  styleUrl: './tratamientos.component.css',
+  providers: [TratamientosService]
 })
 
 export class TratamientosComponent {
@@ -37,7 +40,7 @@ export class TratamientosComponent {
   tratamientos: any[] = [];
   tratamientoForm!: FormGroup;
 
-  constructor(private router: Router, private fb: FormBuilder) {}
+  constructor(private router: Router, private fb: FormBuilder, private jsonTratamientos: TratamientosService) {}
 
   ngOnInit(): void {
 
@@ -49,26 +52,12 @@ export class TratamientosComponent {
       valor: ['', Validators.required],
     });
 
-    console.log('INIT')
-    var p = localStorage.getItem('tratamientos');
-    console.log(p);
-
-    if (p != undefined) {
-
-      var list = JSON.parse(p);
-      console.log(list);
-      for(var i = 0; i<list.length; i++) {
-
-        console.log(list[i].nombre);
-        this.tratamiento.nombre = list[i].nombre;
-        this.tratamiento.descripcion = list[i].descripcion;
-        this.tratamiento.valor = list[i].valor;
-        this.tratamientos.push(this.tratamiento);
-
+    this.jsonTratamientos.getTratamientos().subscribe(
+      data=> {
+        console.log(data);
+        this.tratamientos = data;
       }
-
-    }
-    console.log(this.tratamientos);
+    )
 
   }
 

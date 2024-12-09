@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { formatDate, CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { PacientesService } from '../../services/pacientes.service';
 
 /**
  * @descripcion
@@ -27,9 +28,10 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 @Component({
   selector: 'app-pacientes',
   standalone: true,
-  imports: [ CommonModule,ReactiveFormsModule],
+  imports: [ CommonModule,ReactiveFormsModule, HttpClientModule],
   templateUrl: './pacientes.component.html',
-  styleUrl: './pacientes.component.css'
+  styleUrl: './pacientes.component.css',
+  providers: [PacientesService]
 })
 
 export class PacientesComponent {
@@ -37,8 +39,9 @@ export class PacientesComponent {
   paciente: any = {};
   pacientes: any[] = [];
   pacienteForm!: FormGroup;
+  p: string = '';
 
-  constructor(private router: Router, private fb: FormBuilder) {}
+  constructor(private router: Router, private fb: FormBuilder, private jsonPacientes: PacientesService) {}
 
   ngOnInit(): void {
 
@@ -53,23 +56,37 @@ export class PacientesComponent {
       email: ['', [Validators.required, Validators.email]]
     });
 
-    var p = localStorage.getItem('pacientes');
-    console.log(p);
-    if (p != undefined) {
-      var list = JSON.parse(p);
-      console.log(list);
-      for(var i = 0; i<list.length; i++) {
-        console.log(list[i].nombres);
-        this.paciente.rut = list[i].rut;
-        this.paciente.nombres = list[i].nombres;
-        this.paciente.apellidos = list[i].apellidos;
-        this.paciente.direccion = list[i].direccion;
-        this.paciente.telefono = list[i].telefono;
-        this.paciente.email = list[i].email;
+    this.jsonPacientes.getPacientes().subscribe(
+      data=> {
+        console.log(data);
+        this.pacientes = data;
+      }
+    )
+
+  }
+
+  setPacientesList(): void {
+
+    if (this.pacientes != undefined) {
+
+      console.log('Registros '+this.pacientes.length);
+
+      for(var cantidad = 0; cantidad<this.pacientes.length; cantidad++) {
+
+        console.log(this.pacientes[cantidad].nombres);
+
+        this.paciente.rut = this.pacientes[cantidad].rut;
+        this.paciente.nombres = this.pacientes[cantidad].nombres;
+        this.paciente.apellidos = this.pacientes[cantidad].apellidos;
+        this.paciente.direccion = this.pacientes[cantidad].direccion;
+        this.paciente.telefono = this.pacientes[cantidad].telefono;
+        this.paciente.email = this.pacientes[cantidad].email;
         this.pacientes.push(this.paciente);
+
       }
 
     }
+
     console.log(this.pacientes);
 
   }
