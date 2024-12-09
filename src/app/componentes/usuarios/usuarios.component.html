@@ -15,8 +15,11 @@
             </div>
 
             <label>Contrase&ntilde;a</label>
-            <input class="form-control" type="text" id="contrasena" formControlName="contrasena" placeholder="Contraseña">
+            <input class="form-control" type="password" id="contrasena" formControlName="contrasena" placeholder="Contraseña">
             <div class="alert alert-warning" *ngIf="usuarioForm.get('contrasena')!.touched && usuarioForm.get('contrasena')!.errors">
+                <div class="text text-danger" *ngIf="usuarioForm.get('contrasena')!.hasError('maxLength') || usuarioForm.get('contrasena')!.hasError('minLength') || usuarioForm.get('contrasena')!.hasError('pattern')">
+                    Las validaciones de la contraseña consideran un tamaño mínimo de 6 y un máximo de 10 caracteres y como mínimo 1 letra mayúscula, un número y un SIGNO PESO $ o el SIGNO GATO #.<br />
+                </div>
                 La contraseña es obligatoria.
             </div>
 
@@ -47,7 +50,7 @@
                 <tbody id="usuarioList">
                     <tr *ngFor="let p of usuarios; index as i">
                         <td>{{p.usuario}}</td>
-                        <td>{{p.constrasena}}</td>
+                        <td *ngIf="p.contrasena != ''">********</td>
                         <td>{{p.nombre}}</td>
                         <td>{{p.rol}}</td>
                         <td><button (click)="unsetUsuario(i)">

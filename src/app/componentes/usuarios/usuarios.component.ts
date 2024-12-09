@@ -47,7 +47,7 @@ export class UsuariosComponent {
     this.usuarioForm = this.fb.group({
       nombre: ['', Validators.required],
       usuario: ['', Validators.required],
-      contrasena: ['', Validators.required],
+      contrasena: ['', [Validators.required, Validators.pattern(/[0-9]/), Validators.pattern(/[A-Z]/) , Validators.pattern(/[$#]/), Validators.minLength(6), Validators.maxLength(10)]],
       rol: ['', Validators.required],
     });
 
@@ -79,7 +79,7 @@ export class UsuariosComponent {
     this.usuario.nombre = nombre;
     this.usuario.usuario = usuario;
     this.usuario.contrasena = contrasena;
-    this.usuario.rol = contrasena;
+    this.usuario.rol = rol;
 
     this.usuarios.push(this.usuario);
 
