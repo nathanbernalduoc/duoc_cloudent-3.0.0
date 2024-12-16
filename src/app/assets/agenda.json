@@ -1,0 +1,11 @@
+{
+    "agenda":
+      [
+            {
+                  "fecha": "2024-12-10",
+                  "hora": "20:20:00",
+                  "paciente": "Juan Perez",
+                  "tratamiento": "Extracción"
+            }
+      ]
+}

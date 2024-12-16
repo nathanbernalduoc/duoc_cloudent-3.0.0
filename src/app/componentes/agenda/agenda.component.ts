@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { formatDate, CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AgendaService } from '../../services/agenda.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 /**
@@ -26,12 +28,16 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 @Component({
   selector: 'app-agenda',
   standalone: true,
-  imports: [ CommonModule,ReactiveFormsModule],
+  imports: [ CommonModule,ReactiveFormsModule, HttpClientModule],
   templateUrl: './agenda.component.html',
-  styleUrl: './agenda.component.css'
+  styleUrl: './agenda.component.css',
+  providers: [AgendaService]
+  
 })
 
 export class AgendaComponent {
+
+  private agendaUrl = 'https://firebasestorage.googleapis.com/v0/b/test-project-eb5c0.firebasestorage.app/o/agenda.json?alt=media&token=https://firebasestorage.googleapis.com/v0/b/test-project-eb5c0.firebasestorage.app/o/usuarios.json?alt=media&token=278c02f1-16a9-41e3-87b2-6c7dbded1516';
 
   agenda: any = {};
   agendas: any[] = [];
@@ -39,7 +45,7 @@ export class AgendaComponent {
   tratamientos: any[] = [];
   agendaForm!: FormGroup;
 
-  constructor(private router: Router, private fb: FormBuilder) {}
+  constructor(private router: Router, private fb: FormBuilder, private jsonAgenda: AgendaService) {}
 
   ngOnInit(): void {
 
@@ -52,52 +58,8 @@ export class AgendaComponent {
       tratamiento: ['', Validators.required],
     });
 
-    var pac = localStorage.getItem('pacientes');
-    if (pac != undefined) {
+    this.getAgenda();
 
-      var list = JSON.parse(pac);
-      console.log(list);
-      for(var i = 0; i<list.length; i++) {
-
-        console.log(list[i].fecha);
-        var paciente = { 'rut': list[i].rut, 'nombres': list[i].nombres, 'apellidos': list[i].apellidos, 'direccion': list[i].direccion, 'telefono': list[i].telefono, 'email': list[i].email};
-        this.pacientes.push(paciente);
-
-      }
-
-
-    }
-
-    var tra = localStorage.getItem('tratamientos');
-    if (tra != undefined) {
-
-      var list = JSON.parse(tra);
-      console.log(list);
-      for(var i = 0; i<list.length; i++) {
-
-        var tratamiento = { 'nombre': list[i].nombre, 'descripcion': list[i].descripcion, 'valor': list[i].valor };
-        this.tratamientos.push(tratamiento);
-
-      }
-
-
-    }
-
-    var p = localStorage.getItem('agenda');
-    console.log(p);
-
-    if (p != undefined) {
-
-      var list = JSON.parse(p);
-      console.log(list);
-      for(var i = 0; i<list.length; i++) {
-
-        var agenda = { 'fecha': list[i].fecha, 'hora': list[i].hora, 'paciente': list[i].paciente, 'tratamiento': list[i].tratamiento };
-        this.agendas.push(this.agendas);
-
-      }
-
-    }
     console.log(this.agendas);
 
   }
@@ -109,6 +71,17 @@ export class AgendaComponent {
       console.log('Guardando agenda.');
       this.setAgenda();
     }
+  }
+
+  getAgenda(): void {
+
+    this.jsonAgenda.getAgenda().subscribe(
+      data => {
+        console.log(data);
+        this.agendas = data;
+      }
+    )
+    
   }
 
   setAgenda(): void {

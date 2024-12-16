@@ -1,0 +1,25 @@
+{
+        "tratamientos":
+        [
+            {
+                "nombre":"Ortodoncia",
+                "descripcion":"Procedimiento de Ortodoncia",
+                "valor":12321
+            },
+            {
+                "nombre":"Extracción",
+                "descripcion":"Sacado de muelas",
+                "valor":3540
+            },
+            {
+                "nombre":"Tapadura",
+                "descripcion":"Instalación de tapaduras",
+                "valor":5060
+            },
+            {
+                "nombre":"Limpieza dental",
+                "descripción":"Procedimiento de limpieza dental",
+                "valor":34000
+            }
+        ]
+}

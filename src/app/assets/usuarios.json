@@ -1,0 +1,23 @@
+{
+ "usuarios":
+        [
+            {
+                "usuario":"juanperez",
+                "nombre":"Juan Pérez",
+                "contrasena":"123$123",
+                "rol":"Dentista"
+            },
+            {
+                "usuario":"admin",
+                "nombre":"Administrador",
+                "contrasena":"1235e#",
+                "rol":"Administrador"
+            },
+            {
+                "usuario":"asistente",
+                "nombre":"Monica Pérez",
+                "contrasena":"123efd$#",
+                "rol":"Asistente"
+            }
+        ]
+}

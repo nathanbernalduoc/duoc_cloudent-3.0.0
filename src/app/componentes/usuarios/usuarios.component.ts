@@ -3,7 +3,8 @@ import { formatDate, CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UsuariosService } from '../../services/usuarios.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 /**
  * @descripcion
@@ -34,11 +35,19 @@ import { HttpClientModule } from '@angular/common/http';
 
 export class UsuariosComponent {
 
+  jsonUrl = 'firebasestorage.googleapis.com/v0/b/test-project-eb5c0.firebasestorage.app/o/usuarios.json?alt=media&token=105de06f-0881-488b-b15d-3692aed6f257';
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer 105de06f-0881-488b-b15d-3692aed6f257'
+    })
+  }
+
   usuario: any = {};
   usuarios: any[] = [];
   usuarioForm!: FormGroup;
 
-  constructor(private router: Router, private fb: FormBuilder, private jsonUsuarios: UsuariosService) {}
+  constructor(private router: Router, private fb: FormBuilder, private jsonUsuarios: UsuariosService, private http: HttpClient) {}
 
   ngOnInit(): void {
 
@@ -51,12 +60,15 @@ export class UsuariosComponent {
       rol: ['', Validators.required],
     });
 
-    this.jsonUsuarios.getUsuarios().subscribe(
-      data=> {
-        console.log(data);
-        this.usuarios = data;
-      }
-    )
+    this.jsonUsuarios.getUsuarios().subscribe(data => {
+      this.usuarios = data;
+    });
+
+  }
+
+  getUsuario(): Observable<any> {
+
+    return this.http.get(this.jsonUrl); 
 
   }
 
@@ -81,8 +93,10 @@ export class UsuariosComponent {
     this.usuario.contrasena = contrasena;
     this.usuario.rol = rol;
 
-    this.usuarios.push(this.usuario);
+    
 
+    this.getUsuario();
+    
     localStorage.setItem('usuarios', JSON.stringify(this.usuarios));
 
   }

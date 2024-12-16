@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { formatDate, CommonModule } from '@angular/common';
+import { formatDate, CommonModule, getLocaleExtraDayPeriodRules } from '@angular/common';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TratamientosService } from '../../services/tratamientos.service';
@@ -52,6 +52,12 @@ export class TratamientosComponent {
       valor: ['', Validators.required],
     });
 
+    this.getTratamientos();
+
+  }
+
+  getTratamientos(): void {
+
     this.jsonTratamientos.getTratamientos().subscribe(
       data=> {
         console.log(data);
@@ -60,19 +66,17 @@ export class TratamientosComponent {
     )
 
   }
-
+  
   submitForm(): void {
     if (!this.tratamientoForm.valid) {
       alert('Revise los datos proporcionados, se han encontrado errores de validaciones.');
     } else {
       console.log('Guardando tratamiento.');
-      this.setTratamiento();
+      this.setTratamiento(this.tratamiento);
     }
   }
 
-  setTratamiento(): void {
-
-    console.log('Almacenando..');
+  setTratamiento(tratamiento: any[]): void {
 
     var nombre = this.tratamientoForm.get('nombre')!.value;
     var descripcion = this.tratamientoForm.get('descripcion')!.value;
@@ -82,18 +86,15 @@ export class TratamientosComponent {
     this.tratamiento.descripcion = descripcion;
     this.tratamiento.valor = valor;
 
-    console.log('Adding..');
+    this.jsonTratamientos.setTratamiento(this.tratamiento).subscribe(
+      data=> {
+        console.log(data);
+        this.tratamiento = data;
+      }
+    )
 
-    console.log("ANTES");
-    console.log(this.tratamientos);
-
-    this.tratamientos.push(this.tratamiento);
-
-    console.log("DESPUES");
-    console.log(this.tratamientos);
-
-    localStorage.setItem('tratamientos', JSON.stringify(this.tratamientos));
-
+    this.getTratamientos();
+    
   }
 
   unsetTratamiento(id: number): void {

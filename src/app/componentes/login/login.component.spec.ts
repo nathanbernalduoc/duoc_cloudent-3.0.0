@@ -20,4 +20,19 @@ describe('LoginComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('(1) - Validando Login', () => {
+
+    component.loginForm.setValue(
+      {
+        user: 'nathanbernal@gmail.com',
+        pass: '123x123'
+      }
+    );
+
+    //component.submitForm();
+    expect(component.loginForm.get('user')?.hasError('required')).toBe(false);
+
+  });
+
 });

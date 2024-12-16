@@ -1,0 +1,45 @@
+{
+    "pacientes":
+        [
+            {
+                "rut":"123123-4",
+                "nombres":"Juan",
+                "apellidos":"Pérez",
+                "direccion":"Su casa 1233",
+                "telefono":"98978473",
+                "email":"juanperez@duoc.cl"
+            },
+            {
+                "rut":"1654324-3",
+                "nombres":"Pepe",
+                "apellidos":"Gómez",
+                "direccion":"Calle sin salida 123",
+                "telefono":"967478573",
+                "email":"pepegomez@domain.cl"
+            },
+            {
+                "rut":"757932443-K",
+                "nombres":"Alicia",
+                "apellidos":"Keys",
+                "direccion":"Avenida Luces, esquina Mambo #123",
+                "telefono":"047565883",
+                "email":"keys@domain.cl"
+            },
+            {
+                "rut":"14233445-5",
+                "nombres":"Pat",
+                "apellidos":"Metheny",
+                "direccion":"Nueva York Street #13, USA",
+                "telefono":"+13425995",
+                "email":"patmetheny@musica.cl"
+            },
+            {
+                "rut":"76967648-1",
+                "nombres":"Luis",
+                "apellidos":"Jiménez",
+                "direccion":"Avenida Pedro Montt 1234. Valpo",
+                "telefono":"978783744",
+                "email":"luisjimenez@chile.cl"
+            }
+        ]
+    }

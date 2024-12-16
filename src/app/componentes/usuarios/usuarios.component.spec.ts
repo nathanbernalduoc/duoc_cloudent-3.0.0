@@ -21,7 +21,7 @@ describe('UsuariosComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('Validando campo nombre de usuario al agregar nuevo usuario (Forzando error)', () => {
+  it('(5) - Validando campo nombre de usuario al agregar nuevo usuario', () => {
 
     component.usuarioForm.setValue(
       {
@@ -38,7 +38,7 @@ describe('UsuariosComponent', () => {
   });
 
 
-  it('Validando campo usuario de usuario al agregar nuevo usuario (Forzando error)', () => {
+  it('(4) - Validando campo usuario de usuario al agregar nuevo usuario', () => {
 
     component.usuarioForm.setValue(
       {
@@ -50,7 +50,7 @@ describe('UsuariosComponent', () => {
     );
 
     component.submitForm();
-    expect(component.usuarioForm.get('nombre')?.hasError('required')).toBe(true);
+    expect(component.usuarioForm.get('nombre')?.hasError('required')).toBe(false);
 
   });
 

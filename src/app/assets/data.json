@@ -1,0 +1,98 @@
+{
+    "pacientes":
+        [
+            {
+                "rut":"123123-4",
+                "nombres":"Juan",
+                "apellidos":"Pérez",
+                "direccion":"Su casa 1233",
+                "telefono":"98978473",
+                "email":"juanperez@duoc.cl"
+            },
+            {
+                "rut":"1654324-3",
+                "nombres":"Pepe",
+                "apellidos":"Gómez",
+                "direccion":"Calle sin salida 123",
+                "telefono":"967478573",
+                "email":"pepegomez@domain.cl"
+            },
+            {
+                "rut":"757932443-K",
+                "nombres":"Alicia",
+                "apellidos":"Keys",
+                "direccion":"Avenida Luces, esquina Mambo #123",
+                "telefono":"047565883",
+                "email":"keys@domain.cl"
+            },
+            {
+                "rut":"14233445-5",
+                "nombres":"Pat",
+                "apellidos":"Metheny",
+                "direccion":"Nueva York Street #13, USA",
+                "telefono":"+13425995",
+                "email":"patmetheny@musica.cl"
+            },
+            {
+                "rut":"76967648-1",
+                "nombres":"Luis",
+                "apellidos":"Jiménez",
+                "direccion":"Avenida Pedro Montt 1234. Valpo",
+                "telefono":"978783744",
+                "email":"luisjimenez@chile.cl"
+            }
+        ],
+    "tratamientos":
+        [
+            {
+                "nombre":"Ortodoncia",
+                "descripcion":"Procedimiento de Ortodoncia",
+                "valor":12321
+            },
+            {
+                "nombre":"Extracción",
+                "descripcion":"Sacado de muelas",
+                "valor":3540
+            },
+            {
+                "nombre":"Tapadura",
+                "descripcion":"Instalación de tapaduras",
+                "valor":5060
+            },
+            {
+                "nombre":"Limpieza dental",
+                "descripción":"Procedimiento de limpieza dental",
+                "valor":34000
+            }
+        ],
+    "usuarios":
+        [
+            {
+                "usuario":"juanperez",
+                "nombre":"Juan Pérez",
+                "contrasena":"123$123",
+                "rol":"Dentista"
+            },
+            {
+                "usuario":"admin",
+                "nombre":"Administrador",
+                "contrasena":"1235e#",
+                "rol":"Administrador"
+            },
+            {
+                "usuario":"asistente",
+                "nombre":"Monica Pérez",
+                "contrasena":"123efd$#",
+                "rol":"Asistente"
+            }
+        ],
+    "agenda":
+        [
+            {
+                    "fecha": "2024-12-10",
+                    "hora": "20:20:00",
+                    "paciente": "Juan Perez",
+                    "tratamiento": "Extracción"
+            }
+        ]
+}

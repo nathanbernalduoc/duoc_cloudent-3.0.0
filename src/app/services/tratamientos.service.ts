@@ -15,4 +15,8 @@ export class TratamientosService {
     return this.http.get(this.jsonTratamientos);
   }
 
+  setTratamiento(tratamiento: any[]): Observable<any> {
+    return this.http.post(this.jsonTratamientos, tratamiento);
+  }
+
 }

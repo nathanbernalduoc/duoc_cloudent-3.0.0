@@ -22,12 +22,12 @@ describe('TratamientosComponent', () => {
   });
 
 
-  it('Validando campo descripción de nuevo tratamiento', () => {
+  it('(6) - Validando campo descripción de nuevo tratamiento', () => {
 
     component.tratamientoForm.setValue(
       {
         nombre: 'Tratamiento de prueba',
-        descripcion: null,
+        descripcion: 'Este es un tratamiento de prueba.',
         valor: 12
       }
     );
@@ -38,13 +38,13 @@ describe('TratamientosComponent', () => {
   });
 
 
-  it('Validando campo nombre de nuevo tratamiento', () => {
+  it('(3) - Validando campo nombre de nuevo tratamiento', () => {
 
     component.tratamientoForm.setValue(
       {
-        nombre: null, // nombre a modificar para excepción
+        nombre: 'Tratamiento de prueba', // nombre a modificar para excepción
         descripcion: 'Prueba',
-        valor: '0'
+        valor: '12300'
       }
     );
 
